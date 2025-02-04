@@ -29,13 +29,16 @@ public class Client {
                         System.out.println(message);
                     }
                 } catch(IOException ioe) {
-                    System.out.println("Error reading messages");
+                    System.out.println("You've disconnected from the server");
                 }
             }).start();
 
             // Writing messages
             String message;
             while((message = sc.nextLine()) != null) {
+                if(message.equalsIgnoreCase("disconnect")){
+                    break;
+                }
                 bufferOut.println(message);
             }
 
